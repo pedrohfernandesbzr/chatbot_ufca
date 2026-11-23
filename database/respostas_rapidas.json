@@ -23,10 +23,21 @@
       "muito obrigado",
       "muito obrigada",
       "agradeço",
-      "tchau",
-      "ate mais",
-      "até mais"
+      "agradeco"
     ],
     "resposta": "Por nada! Se precisar de mais alguma informação sobre a UFCA, é só perguntar."
+  },
+  "despedidas": {
+    "perguntas": [
+      "tchau",
+      "ate mais",
+      "até mais",
+      "ate logo",
+      "até logo",
+      "flw",
+      "falou",
+      "encerrar"
+    ],
+    "resposta": "Até logo! Sempre que tiver dúvidas sobre a UFCA, estou à disposição por aqui."
   }
 }

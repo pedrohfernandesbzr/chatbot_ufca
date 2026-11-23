@@ -1,6 +1,13 @@
 import os
 import sys
 import subprocess
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent
+SCRIPTS_DIR = BASE_DIR / "scripts"
+APP_SCRIPT = SCRIPTS_DIR / "app.py"
+CRIAR_BANCO_SCRIPT = SCRIPTS_DIR / "criar_banco.py"
+REQUIREMENTS_FILE = BASE_DIR / "requirements.txt"
 
 # ==============================================================================
 # EDITE AQUI AS INFORMAÇÕES SOBRE O PROJETO (EXIBIDAS NA OPÇÃO 7 DO MENU)
@@ -17,8 +24,6 @@ Protótipo de assistente virtual baseado em Inteligência Artificial com arquite
 RAG (Retrieval-Augmented Generation), suporte híbrido (Google Gemini na nuvem e
 Ollama local), cache inteligente de respostas frequentes e telemetria anônima
 em conformidade com a LGPD.
-
-[Adicione aqui observações adicionais, links do repositório ou instruções]
 """
 # ==============================================================================
 
@@ -56,15 +61,15 @@ def instalar_requerimentos():
     print("         INSTALAÇÃO DE DEPENDÊNCIAS DO PROJETO         ")
     print("=======================================================\n")
 
-    if not os.path.exists("requirements.txt"):
-        print("[Erro] Arquivo 'requirements.txt' não encontrado na pasta atual.")
+    if not REQUIREMENTS_FILE.exists():
+        print(f"[Erro] Arquivo '{REQUIREMENTS_FILE}' não encontrado.")
         input("\nPressione Enter para voltar ao menu...")
         return
 
     print("Instalando pacotes via pip (aguarde)...\n")
     try:
         subprocess.run(
-            [sys.executable, "-m", "pip", "install", "-r", "requirements.txt"],
+            [sys.executable, "-m", "pip", "install", "-r", str(REQUIREMENTS_FILE)],
             check=True
         )
         print("\n[Sucesso] Todas as dependências foram instaladas/atualizadas!")
@@ -86,6 +91,11 @@ def exibir_informacoes_projeto():
 
 
 def executar_streamlit(ambiente_customizado):
+    if not APP_SCRIPT.exists():
+        print(f"\n[Erro] Arquivo principal não encontrado em: {APP_SCRIPT}")
+        input("Pressione Enter para voltar ao menu...")
+        return
+
     print("\n" + "=" * 55)
     print("Servidor do Assistente UFCA iniciado!")
     print("Para encerrar o servidor e voltar a este menu,")
@@ -93,7 +103,8 @@ def executar_streamlit(ambiente_customizado):
     print("=" * 55 + "\n")
 
     processo = subprocess.Popen(
-        [sys.executable, "-m", "streamlit", "run", "app.py"],
+        [sys.executable, "-m", "streamlit", "run", str(APP_SCRIPT)],
+        cwd=str(BASE_DIR),
         env=ambiente_customizado
     )
 
@@ -170,14 +181,29 @@ def menu_principal():
             executar_streamlit(env)
 
         elif opcao == "3":
-            print("\nExecutando criar_banco.py...")
+            print("\nQual indice vetorial deseja gerar?")
+            print("  1. Nuvem Gemini (3072 dimensoes)")
+            print("  2. Local Ollama (768 dimensoes - nomic-embed-text)")
+            sub = input("Escolha (1 ou 2): ").strip()
+
             env = os.environ.copy()
-            if chave_api_sessao:
+            modo_arg = "ollama"
+            if sub == "1":
+                if not chave_api_sessao:
+                    print("\n[Erro] Defina a GOOGLE_API_KEY na opcao 4 primeiro.")
+                    input("\nPressione Enter para voltar ao menu...")
+                    continue
                 env["GOOGLE_API_KEY"] = chave_api_sessao
+                modo_arg = "gemini"
             else:
                 env.pop("GOOGLE_API_KEY", None)
 
-            subprocess.run([sys.executable, "criar_banco.py"], env=env)
+            print("\nExecutando criar_banco.py...")
+            subprocess.run(
+                [sys.executable, str(CRIAR_BANCO_SCRIPT), modo_arg],
+                cwd=str(BASE_DIR),
+                env=env
+            )
             input("\nPressione Enter para voltar ao menu...")
 
         elif opcao == "4":

@@ -1,0 +1,20 @@
+# Segredos e variáveis de ambiente
+.streamlit/secrets.toml
+.env
+*.env
+
+# Caches voláteis de respostas
+database/cache_respostas.json
+cache_respostas.json
+
+# Logs e telemetria com dados de sessão
+telemetry/*.csv
+telemetry/*.log
+*.log
+
+# Ambiente Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.DS_Store

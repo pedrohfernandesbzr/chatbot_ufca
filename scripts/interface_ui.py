@@ -1,34 +1,31 @@
-import os
 import base64
 import streamlit as st
 import streamlit.components.v1 as components
 
-PASTA_ASSETS = "assets"
-PASTA_TEMPLATES = "templates"
+from config import ASSETS_DIR, TEMPLATES_DIR
 
 
 def carregar_asset_base64(nome_arquivo):
-    caminho = os.path.join(PASTA_ASSETS, nome_arquivo)
-    if os.path.exists(caminho):
-        with open(caminho, "rb") as f:
-            ext = nome_arquivo.split(".")[-1].lower()
-            mime = "image/jpeg" if ext in ("jpg", "jpeg") else f"image/{ext}"
-            return f"data:{mime};base64,{base64.b64encode(f.read()).decode()}"
+    caminho = ASSETS_DIR / nome_arquivo
+    if caminho.exists():
+        ext = caminho.suffix.lstrip(".").lower()
+        mime = "image/jpeg" if ext in ("jpg", "jpeg") else f"image/{ext}"
+        dados_b64 = base64.b64encode(caminho.read_bytes()).decode()
+        return f"data:{mime};base64,{dados_b64}"
     return ""
 
 
 def _ler_template(nome_arquivo):
-    caminho = os.path.join(PASTA_TEMPLATES, nome_arquivo)
-    with open(caminho, "r", encoding="utf-8") as f:
-        return f.read()
+    caminho = TEMPLATES_DIR / nome_arquivo
+    return caminho.read_text(encoding="utf-8")
 
 
 def obter_caminhos_icones():
-    favicon = os.path.join(PASTA_ASSETS, "logo_chatbot_ufca_beta.png")
-    avatar = os.path.join(PASTA_ASSETS, "icone_sms_chatbot_ufca_beta.png")
+    favicon = ASSETS_DIR / "logo_chatbot_ufca_beta.png"
+    avatar = ASSETS_DIR / "icone_sms_chatbot_ufca_beta.png"
     return {
-        "favicon": favicon if os.path.exists(favicon) else None,
-        "avatar_assistente": avatar if os.path.exists(avatar) else None,
+        "favicon": str(favicon) if favicon.exists() else None,
+        "avatar_assistente": str(avatar) if avatar.exists() else None,
     }
 
 
