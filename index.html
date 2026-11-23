@@ -348,4 +348,175 @@
             }
             .hero {
                 flex-direction: column;
-                text-
+                text-align: center;
+                padding: 24px 20px;
+            }
+            .hero-actions {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barra Superior -->
+    <header class="topbar">
+        <div class="topbar-group">
+            <a href="#mais-informacoes">MAIS INFORMAÇÕES</a>
+            <a href="#como-participar">CONTRIBUA COM O PROJETO</a>
+        </div>
+        <div class="topbar-group">
+            <a href="https://www.ufca.edu.br/" target="_blank">
+                <img src="assets/brasao_ufca.png" alt="Brasão UFCA">
+                <span>Site oficial da UFCA</span>
+            </a>
+            <a href="#contatos">Contatos</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Apresentação Principal -->
+        <section class="hero">
+            <img class="hero-logo" src="assets/logo_chatbot_ufca_beta.png" alt="Logo Chatbot UFCA">
+            <div class="hero-content">
+                <h1>Chatbot UFCA (Protótipo Beta - v0.1.0)</h1>
+                <p>
+                    Assistente virtual desenvolvido por estudantes para agilizar o acesso a informações sobre cursos,
+                    matrículas, auxílios estudantis, editais, setores e atendimento da Universidade Federal do Cariri (UFCA).
+                </p>
+                <div class="hero-actions">
+                    <a class="btn-primary" href="https://chatbot-ufca.streamlit.app/" target="_blank">
+                        Abrir Assistente em Tela Cheia
+                    </a>
+                    <button class="btn-secondary" id="btnAbrirWidgetHero">
+                        Abrir em Janela Rápida
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção 1: Mais Informações -->
+        <section class="section-card" id="mais-informacoes">
+            <h2>Mais Informações sobre o Projeto</h2>
+            <p>
+                O <strong>Chatbot UFCA</strong> utiliza arquitetura <strong>RAG (Retrieval-Augmented Generation)</strong>.
+                Antes de formular qualquer resposta, o sistema consulta uma base vetorial construída a partir de documentos,
+                editais e guias públicos da instituição, garantindo respostas objetivas e fundamentadas.
+            </p>
+            <ul class="features-list">
+                <li>
+                    <strong>Respostas Fundamentadas</strong>
+                    O assistente responde estritamente com base no contexto oficial indexado, reduzindo alucinações.
+                </li>
+                <li>
+                    <strong>Triagem Inteligente</strong>
+                    Orienta o passo a passo de procedimentos acadêmicos e indica os contatos dos setores responsáveis.
+                </li>
+                <li>
+                    <strong>Privacidade e LGPD</strong>
+                    Nenhum dado pessoal sensível é solicitado ou armazenado para realizar consultas no sistema.
+                </li>
+            </ul>
+            <div class="disclaimer-banner">
+                <strong>Aviso Legal:</strong> Este projeto é desenvolvido de forma independente por estudantes e
+                <strong>não possui vínculo institucional oficial com a UFCA</strong>. Por se tratar de um protótipo em fase
+                Beta (v0.1.0), está sujeito a falhas ou desatualizações. Sempre confirme informações críticas nos canais oficiais.
+            </div>
+        </section>
+
+        <!-- Seção 2: Como Participar / Contribua -->
+        <section class="section-card" id="como-participar">
+            <h2>Como Participar e Contribuir com o Projeto</h2>
+            <p>
+                Seu feedback é essencial para evoluir a qualidade das respostas e expandir a base de conhecimento do assistente.
+                Escolha uma das formas abaixo para colaborar:
+            </p>
+            <div class="cards-grid">
+                <div class="action-card">
+                    <div>
+                        <h3>Compartilhe sua Experiência</h3>
+                        <p>Relate como foi sua interação com o chatbot, quais dúvidas foram bem respondidas e sugestões de melhoria.</p>
+                    </div>
+                    <a href="https://github.com/pedrohfernandesbzr/chatbot_ufca/discussions" target="_blank">Acessar Discussões</a>
+                </div>
+                <div class="action-card">
+                    <div>
+                        <h3>Reporte Problemas e Ideias</h3>
+                        <p>Encontrou alguma informação desatualizada, resposta incorreta ou falha visual? Abra uma issue no repositório.</p>
+                    </div>
+                    <a href="https://github.com/pedrohfernandesbzr/chatbot_ufca/issues" target="_blank">Abrir Issue no GitHub</a>
+                </div>
+                <div class="action-card">
+                    <div>
+                        <h3>Contribua no Código-Fonte</h3>
+                        <p>Acesse o repositório oficial, explore a arquitetura em Python e envie Pull Requests com melhorias.</p>
+                    </div>
+                    <a href="https://github.com/pedrohfernandesbzr/chatbot_ufca" target="_blank">Ver Repositório</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção 3: Contatos -->
+        <section class="section-card" id="contatos">
+            <h2>Contatos e Canais Oficiais</h2>
+            <p>
+                Para protocolos formais, solicitações de documentos ou atendimento institucional, utilize os canais oficiais
+                da Universidade Federal do Cariri:
+            </p>
+            <div class="contacts-grid">
+                <div class="contact-item">
+                    <strong>Portal Institucional da UFCA</strong>
+                    <a href="https://www.ufca.edu.br/" target="_blank">https://www.ufca.edu.br/</a>
+                </div>
+                <div class="contact-item">
+                    <strong>Catálogo Quem é Quem (Setores e E-mails)</strong>
+                    <a href="https://www.ufca.edu.br/instituicao/administrativo/acesso-a-informacao/institucional/quem-e-quem/" target="_blank">Consultar Lista de Contatos</a>
+                </div>
+                <div class="contact-item">
+                    <strong>Pró-Reitoria de Graduação (PROGRAD)</strong>
+                    E-mail: prograd@ufca.edu.br | Telefone: (88) 3221-9271
+                </div>
+                <div class="contact-item">
+                    <strong>Repositório do Projeto</strong>
+                    <a href="https://github.com/pedrohfernandesbzr/chatbot_ufca" target="_blank">github.com/pedrohfernandesbzr/chatbot_ufca</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="page-footer">
+        Chatbot UFCA - Versão Beta v0.1.0 | Código aberto disponível em
+        <a href="https://github.com/pedrohfernandesbzr/chatbot_ufca" target="_blank">GitHub</a>
+    </footer>
+
+    <!-- Botão Flutuante do Chat -->
+    <button class="chat-widget-launcher" id="btnWidgetLauncher" title="Abrir Assistente Virtual">
+        <img src="assets/icone_sms_chatbot_ufca_beta.png" alt="Chat">
+        <span>Tirar dúvidas</span>
+    </button>
+
+    <script>
+        const URL_STREAMLIT = "https://chatbot-ufca.streamlit.app/";
+
+        function abrirJanelaChat() {
+            const largura = 440;
+            const altura = 660;
+            const esquerda = Math.max(0, window.screen.width - largura - 30);
+            const topo = Math.max(0, window.screen.height - altura - 90);
+
+            const popup = window.open(
+                URL_STREAMLIT,
+                "ChatbotUFCA",
+                `width=${largura},height=${altura},left=${esquerda},top=${topo},resizable=yes,scrollbars=yes`
+            );
+
+            if (!popup || popup.closed || typeof popup.closed === "undefined") {
+                window.open(URL_STREAMLIT, "_blank");
+            }
+        }
+
+        document.getElementById("btnWidgetLauncher").addEventListener("click", abrirJanelaChat);
+        document.getElementById("btnAbrirWidgetHero").addEventListener("click", abrirJanelaChat);
+    </script>
+</body>
+</html>
