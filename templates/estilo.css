@@ -1,0 +1,407 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+html, body, [class*="css"] {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #1F1F1F;
+}
+
+/* Cabeçalho nativo do Streamlit posicionado abaixo da barra institucional */
+header[data-testid="stHeader"] {
+    background: transparent !important;
+    top: 48px !important;
+    height: 44px !important;
+    z-index: 998 !important;
+}
+
+/* Barra Superior Institucional Fixa (#3A332D) */
+.ufca-topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 48px;
+    background-color: #3A332D;
+    color: #EAE4DC;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 28px;
+    z-index: 1000001;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+    font-size: 13px;
+}
+
+.ufca-topbar-left, .ufca-topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.ufca-topbar a {
+    color: #EAE4DC !important;
+    text-decoration: none !important;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s ease;
+}
+
+.ufca-topbar a:hover {
+    color: #F2C94C !important;
+}
+
+.ufca-topbar img {
+    height: 24px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* Sidebar */
+section[data-testid="stSidebar"] {
+    top: 48px !important;
+    height: calc(100vh - 48px) !important;
+    background-color: #F4F5F6 !important;
+    border-right: 1px solid #D8DCE0 !important;
+}
+
+section[data-testid="stSidebar"] > div:first-child {
+    padding-top: 0.8rem !important;
+    padding-bottom: 1.5rem !important;
+}
+
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 2px 4px 12px 4px;
+}
+
+.sidebar-brand img {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+}
+
+.sidebar-brand-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1A1A1A;
+    line-height: 1.2;
+}
+
+.sidebar-section-label {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #1A1A1A;
+    margin: 12px 0 6px 2px;
+}
+
+.sidebar-divider {
+    height: 1px;
+    background-color: #C7CCD1;
+    margin: 12px 0;
+}
+
+/* Botões da Sidebar - Primários (#3B6E75) */
+section[data-testid="stSidebar"] button[kind="primary"],
+section[data-testid="stSidebar"] .stDownloadButton > button {
+    background-color: #3B6E75 !important;
+    color: #FFFFFF !important;
+    border: none !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+    font-size: 13px !important;
+    padding: 0.48rem 0.75rem !important;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.08) !important;
+    transition: background-color 0.2s ease !important;
+}
+
+section[data-testid="stSidebar"] button[kind="primary"]:hover,
+section[data-testid="stSidebar"] .stDownloadButton > button:hover {
+    background-color: #2E585E !important;
+    color: #FFFFFF !important;
+}
+
+/* Botões da Sidebar - Lista de Conversas Abertas */
+section[data-testid="stSidebar"] button[kind="secondary"] {
+    background-color: #FFFFFF !important;
+    color: #222222 !important;
+    border: 1px solid #C8CDD2 !important;
+    border-radius: 7px !important;
+    font-weight: 600 !important;
+    font-size: 12px !important;
+    padding: 0.35rem 0.6rem !important;
+    text-align: left !important;
+    justify-content: flex-start !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+section[data-testid="stSidebar"] button[kind="secondary"]:hover {
+    border-color: #3B6E75 !important;
+    background-color: #EEF5F6 !important;
+}
+
+.sidebar-action-link {
+    display: block;
+    width: 100%;
+    background-color: #3B6E75;
+    color: #FFFFFF !important;
+    text-align: center;
+    text-decoration: none !important;
+    font-weight: 600;
+    font-size: 12.5px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    margin-bottom: 7px;
+    transition: background-color 0.2s ease;
+}
+
+.sidebar-action-link:hover {
+    background-color: #2E585E;
+    color: #FFFFFF !important;
+}
+
+/* Container Principal */
+.main .block-container {
+    padding-top: 64px !important;
+    padding-bottom: 145px !important;
+    max-width: 960px !important;
+}
+
+/* Tela de Boas-vindas (Hero) */
+.hero-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 16px;
+    margin-bottom: 18px;
+}
+
+.hero-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 14px;
+}
+
+.hero-avatar-circle {
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    border: 1.5px solid #4A4A4A;
+    background-color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    flex-shrink: 0;
+}
+
+.hero-avatar-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.hero-title {
+    font-size: 27px;
+    font-weight: 700;
+    color: #111111;
+    line-height: 1.25;
+    margin: 0;
+}
+
+.hero-divider {
+    width: 100%;
+    height: 1px;
+    background-color: #9E9E9E;
+    margin: 6px 0 10px 0;
+}
+
+.hero-subtitle {
+    font-size: 14px;
+    color: #333333;
+    text-align: center;
+    margin: 0;
+}
+
+/* Botões de Sugestão Rápida */
+.sugestoes-titulo {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: #1A1A1A;
+    margin-bottom: 10px;
+}
+
+div[data-testid="stMainBlockContainer"] button[kind="secondary"] {
+    background-color: #FFFFFF !important;
+    color: #2B2B2B !important;
+    border: 1px solid #BDBDBD !important;
+    border-radius: 9px !important;
+    font-size: 13.5px !important;
+    font-weight: 400 !important;
+    padding: 0.55rem 0.9rem !important;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04) !important;
+    transition: all 0.15s ease !important;
+    min-height: 44px !important;
+}
+
+div[data-testid="stMainBlockContainer"] button[kind="secondary"]:hover {
+    border-color: #3B6E75 !important;
+    background-color: #F4F9FA !important;
+    color: #111111 !important;
+}
+
+/* Mensagens do Chat */
+div[data-testid="stChatMessage"] {
+    background-color: transparent !important;
+    padding: 0.75rem 0.25rem !important;
+    gap: 14px !important;
+}
+
+div[data-testid="stChatMessageAvatarUser"] {
+    background-color: #D9DDE2 !important;
+    color: #6B7280 !important;
+    width: 38px !important;
+    height: 38px !important;
+}
+
+div[data-testid="stChatMessageAvatarAssistant"] {
+    background-color: #FFFFFF !important;
+    border: 1.2px solid #555555 !important;
+    width: 38px !important;
+    height: 38px !important;
+    padding: 3px !important;
+}
+
+/* Caixa de Pergunta (stBottom) e Rodapé */
+div[data-testid="stBottom"] {
+    background-color: #FFFFFF !important;
+    padding-top: 4px !important;
+    padding-bottom: 62px !important;
+}
+
+div[data-testid="stBottom"] > div {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+    padding-bottom: 0 !important;
+}
+
+div[data-testid="stChatInput"] {
+    border: 2px solid #8E959C !important;
+    border-radius: 14px !important;
+    background-color: #FFFFFF !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05) !important;
+    overflow: hidden !important;
+    margin-bottom: 0 !important;
+    transition: border-color 0.2s ease !important;
+}
+
+div[data-testid="stChatInput"]:focus-within {
+    border-color: #3B6E75 !important;
+}
+
+div[data-testid="stChatInput"] > div,
+div[data-testid="stChatInput"] [data-baseweb="textarea"],
+div[data-testid="stChatInput"] [data-baseweb="base-input"] {
+    border: none !important;
+    box-shadow: none !important;
+    background-color: transparent !important;
+}
+
+div[data-testid="stChatInput"] textarea {
+    font-size: 14.5px !important;
+    padding: 11px 14px !important;
+    background-color: transparent !important;
+}
+
+div[data-testid="stChatInput"] button {
+    background-color: #3B6E75 !important;
+    color: #FFFFFF !important;
+    border-radius: 50% !important;
+    width: 36px !important;
+    height: 36px !important;
+    margin: 5px !important;
+    border: none !important;
+}
+
+div[data-testid="stChatInput"] button:hover {
+    background-color: #2E585E !important;
+}
+
+/* Rodapé Fixo */
+.ufca-footer-wrapper {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #FFFFFF;
+    padding: 2px 2rem 8px 2rem;
+    z-index: 999;
+    box-sizing: border-box;
+}
+
+.ufca-footer-inner {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 18px;
+    align-items: center;
+}
+
+.ufca-disclaimer-box {
+    background-color: #FFF7C2;
+    border-radius: 6px;
+    padding: 7px 12px;
+    font-size: 10.5px;
+    line-height: 1.32;
+    color: #2C2A1E;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.ufca-credits-box {
+    font-size: 11px;
+    line-height: 1.4;
+    color: #1F1F1F;
+    white-space: nowrap;
+}
+
+.ufca-credits-box strong {
+    font-size: 11.5px;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.ufca-credits-box a {
+    color: #1F1F1F !important;
+    text-decoration: underline !important;
+}
+
+.ufca-credit-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 2px;
+}
+
+.ufca-credit-row img {
+    width: 15px;
+    height: 15px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+div[data-testid="stDeployButton"] button {
+    background-color: #3B6E75 !important;
+    color: #FFFFFF !important;
+    border-radius: 6px !important;
+}

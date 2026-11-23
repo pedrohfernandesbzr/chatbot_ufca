@@ -1,0 +1,32 @@
+{
+  "saudacoes": {
+    "perguntas": [
+      "oi",
+      "ola",
+      "olá",
+      "bom dia",
+      "boa tarde",
+      "boa noite",
+      "tudo bem",
+      "oi tudo bem",
+      "ola tudo bem",
+      "e ai",
+      "opa"
+    ],
+    "resposta": "Olá! Como posso ajudar você com informações sobre a UFCA hoje?"
+  },
+  "agradecimentos": {
+    "perguntas": [
+      "obrigado",
+      "obrigada",
+      "valeu",
+      "muito obrigado",
+      "muito obrigada",
+      "agradeço",
+      "tchau",
+      "ate mais",
+      "até mais"
+    ],
+    "resposta": "Por nada! Se precisar de mais alguma informação sobre a UFCA, é só perguntar."
+  }
+}

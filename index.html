@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot UFCA - Assistente Virtual Institucional</title>
+    <link rel="icon" href="assets/logo_chatbot_ufca_beta.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #1F1F1F;
+            background-color: #FAFAFA;
+        }
+
+        /* Barra Superior Fixa */
+        .topbar {
+            position: sticky;
+            top: 0;
+            height: 52px;
+            background-color: #3A332D;
+            color: #EAE4DC;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 32px;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+            font-size: 13px;
+        }
+
+        .topbar-group {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .topbar a {
+            color: #EAE4DC;
+            text-decoration: none;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+
+        .topbar a:hover {
+            color: #F2C94C;
+        }
+
+        .topbar img {
+            height: 26px;
+            width: auto;
+        }
+
+        /* Container Principal */
+        .container {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 36px 20px 100px 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: #F4F5F6;
+            border: 1px solid #D8DCE0;
+            border-radius: 16px;
+            padding: 36px 40px;
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+
+        .hero-logo {
+            width: 115px;
+            height: 115px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        .hero-content h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #111111;
+            margin-bottom: 10px;
+        }
+
+        .hero-content p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #333333;
+            margin-bottom: 20px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .btn-primary {
+            background-color: #3B6E75;
+            color: #FFFFFF;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            padding: 11px 22px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #2E585E;
+        }
+
+        .btn-secondary {
+            background-color: #FFFFFF;
+            color: #1F1F1F;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            padding: 11px 22px;
+            border-radius: 8px;
+            border: 1px solid #BFC5CC;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-secondary:hover {
+            border-color: #3B6E75;
+            background-color: #EEF5F6;
+        }
+
+        /* Seções da Homepage */
+        .section-card {
+            scroll-margin-top: 76px;
+            background-color: #FFFFFF;
+            border: 1px solid #DCE0E4;
+            border-radius: 14px;
+            padding: 28px 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+        }
+
+        .section-card h2 {
+            font-size: 21px;
+            font-weight: 700;
+            color: #3A332D;
+            border-bottom: 2px solid #3B6E75;
+            padding-bottom: 10px;
+            margin-bottom: 16px;
+        }
+
+        .section-card p {
+            font-size: 14.5px;
+            line-height: 1.65;
+            color: #2B2B2B;
+            margin-bottom: 14px;
+        }
+
+        .features-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 14px;
+            margin: 16px 0;
+        }
+
+        .features-list li {
+            background-color: #F8F9FA;
+            border: 1px solid #E2E6EA;
+            border-radius: 10px;
+            padding: 14px 16px;
+            font-size: 13.5px;
+            line-height: 1.5;
+        }
+
+        .features-list strong {
+            display: block;
+            color: #3B6E75;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .disclaimer-banner {
+            background-color: #FFF7C2;
+            border-left: 4px solid #D4A017;
+            border-radius: 8px;
+            padding: 14px 18px;
+            font-size: 13px;
+            line-height: 1.5;
+            color: #2C2A1E;
+            margin-top: 12px;
+        }
+
+        /* Cards de Contribuição */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .action-card {
+            background-color: #F8F9FA;
+            border: 1px solid #DCE0E4;
+            border-radius: 10px;
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .action-card h3 {
+            font-size: 15.5px;
+            font-weight: 700;
+            color: #1A1A1A;
+            margin-bottom: 8px;
+        }
+
+        .action-card p {
+            font-size: 13.5px;
+            color: #444444;
+            margin-bottom: 16px;
+        }
+
+        .action-card a {
+            align-self: flex-start;
+            background-color: #3B6E75;
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 8px 14px;
+            border-radius: 7px;
+            transition: background-color 0.2s ease;
+        }
+
+        .action-card a:hover {
+            background-color: #2E585E;
+        }
+
+        /* Contatos */
+        .contacts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 14px;
+            margin-top: 14px;
+        }
+
+        .contact-item {
+            background-color: #F8F9FA;
+            border: 1px solid #E2E6EA;
+            border-radius: 10px;
+            padding: 14px 16px;
+            font-size: 13.5px;
+            line-height: 1.5;
+        }
+
+        .contact-item strong {
+            display: block;
+            color: #3A332D;
+            margin-bottom: 4px;
+        }
+
+        .contact-item a {
+            color: #3B6E75;
+            font-weight: 600;
+            text-decoration: underline;
+        }
+
+        /* Rodapé da Página */
+        .page-footer {
+            text-align: center;
+            font-size: 12.5px;
+            color: #555555;
+            padding: 20px;
+            border-top: 1px solid #E0E0E0;
+            background-color: #FFFFFF;
+        }
+
+        .page-footer a {
+            color: #3B6E75;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Botão Flutuante (Widget Launcher) */
+        .chat-widget-launcher {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background-color: #3B6E75;
+            color: #FFFFFF;
+            border: 2px solid #3A332D;
+            border-radius: 50px;
+            padding: 10px 20px 10px 14px;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+            z-index: 9999;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+
+        .chat-widget-launcher:hover {
+            background-color: #2E585E;
+            transform: translateY(-2px);
+        }
+
+        .chat-widget-launcher img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #FFFFFF;
+            padding: 2px;
+            object-fit: contain;
+        }
+
+        @media (max-width: 720px) {
+            .topbar {
+                padding: 0 14px;
+                font-size: 12px;
+            }
+            .topbar-group {
+                gap: 14px;
+            }
+            .hero {
+                flex-direction: column;
+                text-
